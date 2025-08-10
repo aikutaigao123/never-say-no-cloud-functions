@@ -1,12 +1,15 @@
 // cloud.js - 云函数定义文件
 const AV = require('leancloud-storage');
 const nodemailer = require('nodemailer');
+const express = require('express');
+const app = express();
 
 // 初始化LeanCloud
 AV.init({
   appId: process.env.LEANCLOUD_APP_ID,
   appKey: process.env.LEANCLOUD_APP_KEY,
-  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
+  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY,
+  serverURL: 'https://your-app-id.api.lncldglobal.com' // 中国区需要指定serverURL
 });
 
 // 邮件验证云函数
@@ -113,4 +116,10 @@ AV.Cloud.define('checkEmailVerificationStatus', async function(request) {
     console.error(`❌ 检查验证状态失败: ${error.message}`);
     throw new AV.Cloud.Error('检查验证状态失败：' + error.message);
   }
+});
+
+// 启动HTTP服务器
+const PORT = process.env.LEANCLOUD_APP_PORT || process.env.PORT || 3000;
+app.listen(PORT, function () {
+  console.log('Node app is running on port:', PORT);
 });
