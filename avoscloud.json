@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "runtime": "nodejs16.x",
+  "functions": {
+    "cloud.js": {
+      "main": "cloud.js"
+    }
+  }
+}
