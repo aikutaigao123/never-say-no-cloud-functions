@@ -9,7 +9,7 @@ AV.init({
   appId: process.env.LEANCLOUD_APP_ID,
   appKey: process.env.LEANCLOUD_APP_KEY,
   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY,
-  serverURL: 'https://your-app-id.api.lncldglobal.com' // 中国区需要指定serverURL
+  serverURL: 'https://Never.api.lncldglobal.com' // 中国区需要指定serverURL
 });
 
 // 中间件
